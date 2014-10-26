@@ -1,0 +1,31 @@
+<h1>Orders report</h1>
+<% for order in @orders %>
+  Order no. <%= order.order_id %> for <%= order.customer %>
+  <br>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Amount</th>
+      <th>Total</th>
+    </tr>
+    <% for order_line in order.order_lines %>
+      <tr>
+        <td><%= order_line.product.product_id %></td>
+        <td><%= order_line.product.name %></td>
+        <td><%= order_line.product.price %> zł</td>
+        <td><center><%= order_line.amount %></center></td>
+        <td><%= order_line.total %> zł</td>
+      </tr>
+    <% end %>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th><%= order.total %> zł</th>
+    </tr>
+  </table>
+  <br><br>
+<% end %>
